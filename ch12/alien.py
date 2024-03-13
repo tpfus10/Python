@@ -1,7 +1,13 @@
 import pygame
-
+import sys
 import setting
 
+FRAME_PER_SECOND = 60
+HEIGHT = 720
+WIDTH= 1280
+BULLET_COLOR = (255, 0, 0)
+SPACE_IMAGE = './ch12/ship.bmp'
+SHIP_SPEED = 5
 
 def init():
     pygame.init() #초기화
@@ -49,3 +55,26 @@ def update_bullets(screen_rect, bullets):
             bullet.top -=1 #쏘면 앞으로 나가도록 하기
             new_bullets.append(bullet)
     return new_bullets
+
+screen, clock, image, screen_rect, ship_rect, bullets, ship_rect.midbottom = init()
+
+# Do logical updates here. # 2)이벤트에 따른 변화를 업데이트
+new_bullets = update_bullets(screen_rect, bullets)
+screen.fill("grey")  # Fill the display with a solid color
+
+# Render the graphics here.
+render(screen, image, ship_rect, new_bullets)
+
+pygame.display.flip()  # Refresh on-screen display 4) 화면1에서 화면2로 포인터를 이동(화면 전환)
+clock.tick(setting.FRAME_PER_SECOND)  # wait until next frame (at 60 FPS) 5) 4번을 60번 바꾸는 걸 반복하게 함
+
+while True:
+    # Process player inputs.(게임의 실행과 종료)
+    for event in pygame.event.get(): # 1)키보드/마우스의 이벤트
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            # raise SystemExit
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            handle_key_event(screen_rect, bullets, event)
+  

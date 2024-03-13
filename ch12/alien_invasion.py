@@ -1,7 +1,7 @@
 import sys
 import pygame
-
 import setting
+
 from util import init, create_bullet, handle_key_event, update_bullets, render
 
 screen, clock, image, screen_rect, ship_rect, bullets, ship_rect.midbottom = init()
@@ -9,9 +9,7 @@ screen, clock, image, screen_rect, ship_rect, bullets, ship_rect.midbottom = ini
 #image_rect = pygame.Rect(500, 500, 100, 100) 
 #image_rect = screen.get_rect()  =  pygame.Rect(0, 0, 1280, 720) 
 #image_rect.left = 1280/2
-#image_rect.top = 600
-
-bullet = create_bullet
+#image_rect.top = 6005
 
 # Do logical updates here. # 2)이벤트에 따른 변화를 업데이트
 new_bullets = update_bullets(screen_rect, bullets)
