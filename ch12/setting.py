@@ -3,5 +3,6 @@ HEIGHT = 720
 WIDTH= 1280
 BULLET_COLOR = (255, 0, 0)
 SPACE_IMAGE = './ch12/ship.bmp'
-SHIP_SPEED = 5
+ALIEN_IMAGE = './ch12/alien.bmp'
+SHIP_SPEED = 10
 
