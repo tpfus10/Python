@@ -4,9 +4,7 @@ import sys
 import setting
 from util import init, create_bullet, handle_key_event, update_bullets, render
 
-from alien import Alien
-
-screen, clock, image, screen_rect, ship_rect, bullets = init()
+screen, clock, image1, screen_rect,ship_rect, bullets = init()
 
 while True:
     # Process player inputs.
@@ -23,8 +21,8 @@ while True:
     screen.fill((230,230, 230))  # Fill the display with a solid color
 
     # Render the graphics here.
-    render(screen, image, ship_rect, new_bullets)
-    pygame.aliens.draw(pygame.screen)
+    render(screen, image1, ship_rect, new_bullets)
+
    
     pygame.display.flip()  # Refresh on-screen display
     clock.tick(setting.FRAME_PER_SECOND)         # wait until next frame (at 60 FPS)

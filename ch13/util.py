@@ -1,28 +1,23 @@
 import pygame
 import setting
-from alien import Alien
 
 def init():
     pygame.init()
     screen = pygame.display.set_mode((setting.WIDTH, setting.HEIGHT))
     clock = pygame.time.Clock()
-    image = pygame.image.load(setting.SPACE_IMAGE)
-
+    image1 = pygame.image.load(setting.SPACE_IMAGE)
     screen_rect = screen.get_rect()
-    ship_rect = image.get_rect()
+    ship_rect = image1.get_rect()
     ship_rect.midbottom = screen_rect.midbottom
     bullets = []
-
-    aliens = []
-    _create_fleet = []
-    return screen,clock,image,screen_rect,ship_rect,bullets
+    
+    return screen,clock,image1,screen_rect,ship_rect, bullets
 
 def create_bullet(ship_rect):
     bullet = pygame.Rect(0, 0, 5, 50)
     bullet.midtop = ship_rect.midtop
     bullet.top -= ship_rect.height
     return bullet
-
 
 def handle_key_event(ship_rect, bullets, event):
     if event.key == pygame.K_LEFT:
@@ -47,11 +42,8 @@ def update_bullets(screen_rect, bullets):
             new_bullets.append(bullet)
     return new_bullets
 
-def render(screen, image, ship_rect, new_bullets):
-    screen.blit(image, ship_rect)
+
+def render(screen, image1, ship_rect, new_bullets):
+    screen.blit(image1, ship_rect)
     for bullet in new_bullets:
         pygame.draw.rect(screen, setting.BULLET_COLOR, bullet)
-
-def _create_fleet(pygame):
-    alien = Alien(pygame) 
-    pygame.aliens.add(alien)
